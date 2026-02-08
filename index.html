@@ -147,7 +147,7 @@ for (let i = 0; i < 18; i++) {
 }
 
 // 建立紅包
-results.forEach((text) => {
+results.forEach((result) => {
   const envelope = document.createElement("div");
   envelope.className = "envelope";
 
@@ -160,7 +160,9 @@ results.forEach((text) => {
 
   const back = document.createElement("div");
   back.className = "face back";
-  back.textContent = text;
+  back.textContent = result.text;
+  back.style.color = result.color;
+
 
   card.appendChild(front);
   card.appendChild(back);
@@ -193,6 +195,7 @@ results.forEach((text) => {
 
 </body>
 </html>
+
 
 
 
