@@ -62,7 +62,7 @@ h2 {
   margin: auto;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s; /* 慢動作翻開 */
+  transition: transform 4.0s; /* 慢動作翻開 */
   cursor: pointer;
 }
 
@@ -110,11 +110,23 @@ h2 {
 <div class="grid" id="grid"></div>
 
 <script>
+function getRandomPrizeByWeight(prizes) {
+  const totalWeight = prizes.reduce((sum, p) => sum + p.weight, 0);
+  let rand = Math.random() * totalWeight;
+
+  for (const prize of prizes) {
+    if (rand < prize.weight) {
+      return prize.text;
+    }
+    rand -= prize.weight;
+  }
+}
+
 const prizes = [
-  "💰 滿 500 折 50",
-  "🙏 銘謝惠顧",
-  "🙏 銘謝惠顧",
-  "🎫 體驗單一次"
+  { text: "https://i.meee.com.tw/kc5K87i.jpg, weight: 5 },
+  { text: "🎫 體驗單一次", weight: 2 },
+  { text: "得 ", weight:  },
+  { text: "吃 ", weight: 11 }
 ];
 
 const grid = document.getElementById("grid");
@@ -143,7 +155,8 @@ function playSound() {
 // 先決定 18 個紅包獎項
 const results = [];
 for (let i = 0; i < 18; i++) {
-  results.push(prizes[Math.floor(Math.random() * prizes.length)]);
+  results.push(getRandomPrizeByWeight(prizes));
+
 }
 
 // 建立紅包
@@ -193,3 +206,4 @@ results.forEach((text) => {
 
 </body>
 </html>
+
