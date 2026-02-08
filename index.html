@@ -110,24 +110,11 @@ h2 {
 <div class="grid" id="grid"></div>
 
 <script>
-function getRandomPrizeByWeight(prizes) {
-  const totalWeight = prizes.reduce((sum, p) => sum + p.weight, 0);
-  let rand = Math.random() * totalWeight;
-
-  for (const prize of prizes) {
-    if (rand < prize.weight) {
-      return prize.text;
-    }
-    rand -= prize.weight;
-  }
-}
-
-const prizes = [
-  { text: "g", weight: 5 },
-  { text: "🎫 體驗單一次", weight: 2 },
-  { text: "得 ", weight:  },
-  { text: "吃 ", weight: 11 }
-];
+const prizes = [ 
+  "💰 滿 500 折 50",
+  "💰 滿 500 折 50",
+  "🎫 體驗單一次" ,
+  ];
 
 const grid = document.getElementById("grid");
 let opened = false;
@@ -155,7 +142,7 @@ function playSound() {
 // 先決定 18 個紅包獎項
 const results = [];
 for (let i = 0; i < 18; i++) {
-  results.push(getRandomPrizeByWeight(prizes));
+  results.push(prizes[Math.floor(Math.random() * prizes.length)]);
 
 }
 
@@ -206,5 +193,6 @@ results.forEach((text) => {
 
 </body>
 </html>
+
 
 
