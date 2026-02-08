@@ -175,6 +175,8 @@ results.forEach((result) => {
   card.onclick = () => {
     if (opened) return;
     opened = true;
+    bgm.play();
+
 
     playSound();
 
@@ -198,6 +200,7 @@ results.forEach((result) => {
 
 </body>
 </html>
+
 
 
 
